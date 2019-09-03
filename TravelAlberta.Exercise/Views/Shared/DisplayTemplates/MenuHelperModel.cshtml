@@ -1,0 +1,67 @@
+﻿@model MvcSiteMapProvider.Web.Html.Models.MenuHelperModel
+@using System.Web.Mvc.Html
+@using MvcSiteMapProvider.Web.Html.Models
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <a href="#site-wrapper" class="navbar-button collapsed" data-toggle="site-menu" aria-expanded="false" aria-controls="site-wrapper">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-bars"></i>
+            </a>
+            <a href="#site-wrapper" class="navbar-brand collapsed" data-toggle="site-menu" aria-expanded="false" aria-controls="site-wrapper">
+                Travel Alberta Exercise
+            </a>
+
+            <div id="waitMobile" class="pull-right hidden-lg hidden-md" style="display: none;">
+                <!--[if !IE]> -->
+                <i class="fa fa-spinner fa-pulse fa-3x"></i>
+                <!-- <![endif]-->
+                <!--[if gt IE 9]>
+                    <i class="fa fa-spinner fa-pulse fa-3x"></i>
+                <![endif]-->
+                <!--[if lte IE 9]>
+                    <span>
+                        <img src="@Url.Content("~/Content/images/spinner-large.gif")" />
+                    </span>
+                <![endif]-->
+            </div>
+        </div> <!-- end .navbar-header -->
+        <!-- nav content collapses to a mobile friendly menu at 940px or less -->
+        <div id="navbar-main" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                @foreach (var node in Model.Nodes)
+                {
+                    if (node.Children.Any())
+                    {
+                        var active = node.IsCurrentNode ? "active" : string.Empty;
+                        <li class="dropdown @active">
+                            @Html.DisplayFor(m => node)
+                            @Html.DisplayFor(m => node.Children)
+                        </li>
+                    }
+                    else
+                    {
+                        var active = node.IsCurrentNode ? "active" : string.Empty;
+                        <li class="@active">@Html.DisplayFor(m => node)</li>
+                    }
+                }
+            </ul>
+
+            <div id="wait" class="pull-right hidden-xs" style="display: none;">
+                <!--[if !IE]> -->
+                <i class="fa fa-spinner fa-pulse fa-3x"></i>
+                <!-- <![endif]-->
+                <!--[if gt IE 9]>
+                    <i class="fa fa-spinner fa-pulse fa-3x"></i>
+                <![endif]-->
+                <!--[if lte IE 9]>
+                    <span>
+                        <img src="@Url.Content("~/Content/images/spinner-large.gif")" />
+                    </span>
+                <![endif]-->
+            </div>
+        </div> <!-- end .nav-collapse -->
+    </div> <!-- end .navbar-inner -->
+</nav> <!-- end .navbar -->

@@ -1,0 +1,205 @@
+﻿/*
+    © 2013 1764023 Alberta Ltd.
+*/
+       
+//
+// Panels =====================================================================
+
+.panel {
+  margin-bottom: 35px;
+  border-radius: 2px;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.05);
+
+  > .panel-heading {
+    padding: 5px 15px 0 15px;
+
+    h1, h2 {
+      margin-top: 15px;
+      margin-bottom: 10px;
+    }
+    h3 {
+      margin-top: 7px;
+      margin-bottom: 10px;
+    }
+    h4, h5 {
+      font-size: 14px;
+      margin-top: 5px;
+      margin-bottom: 7px;
+    }
+  }
+
+  &.tab-pane {
+    border-top: 0;
+  }
+
+  > .media-list {
+    padding-top: @panel-body-padding;
+
+    li {
+      padding: 0 @panel-body-padding @panel-body-padding @panel-body-padding;
+      border-bottom: 1px solid @panel-default-border;
+    }
+  }
+}
+
+.panel-title {
+    margin: 0 !important;
+    padding: 0 0 0 5px; 
+    font-size: 18px;
+    line-height: 59px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;            
+}
+
+.panel-control{
+    height: 100%;
+    width: 50%;
+    position: relative;
+    float: right;
+
+    &:before{
+	    content: '';
+	    display: inline-block;
+	    height: 100%;
+	    vertical-align: middle;
+	    left: -1em;
+	    position: relative;
+    }
+
+    > a,
+    > .badge ,
+    > .label {
+	    vertical-align: middle
+    }
+
+    > a.btn {
+        margin-top: 10px;
+        &.btn-xs { margin-top: 15px; }
+        &.btn-lg { margin-top: 5px; }
+    }
+
+    > .form-group,
+    > .form-horizontal .form-group {                
+        margin: -10px 0 0 0;
+    }    
+
+
+    > .nav-tabs {
+        display: inline-block;
+        height: 40px;
+        margin-top: 19px;
+        vertical-align: bottom;
+        border: 0;     
+                                    
+        > li:not(.active) {
+            > a {
+                color: #eee;
+                border-bottom: 0!important;
+            }
+            > a:hover {
+                color: #fff;
+                border-color: transparent !important;
+                background-color: rgba(0,0,0,0.2);
+            }
+        }        
+    }
+}
+
+.panel-toolbar {    
+    min-height: 29px;
+    background-color: @table-bg-accent;
+    .clearfix();
+
+    .btn {
+        border-top: 0;
+        border-bottom: 0;
+        border-radius: 0;
+    }    
+
+    > .btn:first-child,
+    > .btn-group:first-child .btn {
+        border-left: 0;
+    }
+
+    > .left {
+        float: left;
+        text-align: left;
+
+        > .btn-group:first-child .btn {
+            border-left: 0;
+        }
+    }
+
+    > .right {
+        float: right;
+        text-align: right;        
+        
+        > .btn-group:last-child .btn { 
+            border-right: 0;
+        }
+    }     
+}
+
+.modal-header .panel-control {      
+    margin-right: 20px;  
+
+    > a { 
+        color: @text-color;
+        opacity: 0.2;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+
+// Panel Themes
+// --------------------------------------------------
+                 
+@panel-inverse-heading-bg: #3b3e46;
+                
+.panel-theme(@color, @border, @background){	
+    &.panel-colorful{
+	    background-color: @background;
+	    border-color: @border;
+	    color: @color;
+        
+        > .panel-footer,
+        > .panel-heading {
+            background-color: @background;
+            border: 0;
+        }
+    }
+
+    & > .panel-toolbar {
+        border-bottom: 1px solid @panel-default-border;
+    }
+
+    & > .panel-heading {
+        color: @color;
+        h1, h2, h3, h4, h5 { color: @color; }     
+    }
+
+    .panel-control {
+        > a:not(.btn) { color: @color; }
+    }
+}
+
+.panel-transparent {
+    background-color: transparent;
+}
+                   
+.panel-inverse {
+    .panel-variant(@panel-default-border; @panel-default-text; @panel-inverse-heading-bg; @panel-default-border);
+    .panel-theme(@panel-primary-text,  @panel-inverse-heading-bg, @panel-inverse-heading-bg);  
+}
+
+.panel-default { .panel-theme(@panel-default-text, @panel-default-border, @panel-bg); }
+.panel-primary { .panel-theme(@panel-primary-text, @panel-primary-heading-bg, @panel-primary-heading-bg); }
+.panel-success { .panel-theme(@panel-success-text, @panel-success-heading-bg, @panel-success-heading-bg); }
+.panel-info    { .panel-theme(@panel-info-text, @panel-info-heading-bg, @panel-info-heading-bg); }
+.panel-warning { .panel-theme(@panel-warning-text, @panel-warning-heading-bg, @panel-warning-heading-bg); }
+.panel-danger  { .panel-theme(@panel-danger-text, @panel-danger-heading-bg, @panel-danger-heading-bg); }
+    

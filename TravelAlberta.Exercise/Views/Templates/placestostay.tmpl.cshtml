@@ -1,0 +1,37 @@
+﻿<script id="placestostay-template" type="text/x-kendo-template">
+    <tr>
+        <td>
+            <span data-bind="text: Id"></span>
+        </td>
+        <td>
+            <span data-bind="text: Name"></span>
+        </td>
+        <td>
+            <span data-bind="text: LocationDescription"></span>
+        </td>
+        <td>
+            <span data-bind="text: HealthPoints"></span>
+        </td>
+    </tr>
+</script>
+
+<script id="placestostay-mobile-template" type="text/x-kendo-template">
+    <tr>
+        <td text-align:left>
+            <div class="row">
+                <div class="col-xs-11">
+                    <span data-bind="text: Name"></span>
+                </div>
+
+                <div class="col-xs-1">
+                    <span data-bind="text: HealthPoints"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-11">
+                    <span data-bind="text: LocationDescription"></span>
+                </div>
+            </div>
+        </td>
+    </tr>
+</script>

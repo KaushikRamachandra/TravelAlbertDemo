@@ -1,0 +1,40 @@
+﻿<nav class="sidebar" role="navigation">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <img src="//az837918.vo.msecnd.net/consumerimages/logos-icons/logo-main-extended.svg" height="50px" width="159px" />
+        </li>
+
+        @if (Request.IsAuthenticated)
+        {
+            <li>
+                <a href="@Url.Action("Index", "Home")">
+                    <i class="fa fa-home fa-fw"></i> Travel Alberta Exercise - Home
+                </a>
+            </li>
+
+            <li>
+                <a href="@Url.Action("Index", "About")">
+                    <i class="fa fa-wrench fa-fw"></i> Travel Alberta Exercise - About
+                </a>
+            </li>
+        }
+        else
+        {
+            <li>
+                <a href="@Url.Action("Index", "Home")">
+                    <i class="fa fa-sign-in fa-fw"></i> Travel Alberta Exercise - Home
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("List", "Home")">
+                    <i class="fa fa-sign-in fa-fw"></i> Simple Searchable Table
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("KendoList", "Home")">
+                    <i class="fa fa-sign-in fa-fw"></i> Searchable Table using Kendo
+                </a>
+            </li>
+        }
+    </ul>
+</nav>            

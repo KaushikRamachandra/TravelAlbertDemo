@@ -1,0 +1,144 @@
+﻿/*
+    © 2013 1764023 Alberta Ltd.
+*/
+
+//
+// Flipswitches ================================================================
+
+@switch-width: 60px;
+@switch-height: 30px;
+@switch-padding: 2px;
+
+@switch-bg: #fff;
+@switch-active-color: #8ce196;
+@switch-inactive-color: #f1f1f1; 
+@switch-border-color: #bbb;
+@switch-border-radius: @switch-height;
+
+.switch {
+    input[type="checkbox"] {
+        display: none;
+
+        &:checked + label:before {
+          background-color: @switch-active-color;
+        }
+        &:checked + label:after {
+          margin-left: @switch-width / 2;
+        }
+    }
+
+    label {
+        width: @switch-width;
+        height: @switch-height;
+        padding: @switch-padding;
+        display: block;
+        position: relative;
+        background-color: @switch-border-color;
+        border-radius: @switch-border-radius;
+        cursor: pointer;
+        outline: none;
+        -webkit-user-select: none;
+           -moz-user-select: none;        
+            -ms-user-select: none;
+                user-select: none;
+
+        &:before,
+        &:after {
+          display: block;
+          position: absolute;
+          top: 1px;
+          left: 1px;
+          bottom: 1px;
+          content: "";
+        }
+
+        &:before {
+            right: 1px;
+            background-color: @switch-inactive-color;
+            border-radius: @switch-border-radius;
+            .transition-property(background);
+            .transition-duration(0.4s);
+            .transition-timing-function(ease);
+        }
+
+        &:after {
+            width: (@switch-width / 2) - 2;
+            background-color: @switch-bg;
+            border-radius: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);    
+            .transition-property(margin);
+            .transition-duration(0.4s);
+            .transition-timing-function(ease);
+        }
+    }
+}
+
+
+// Switch Colours
+// --------------------------------------------------
+                 
+.switch-variant(@color) {
+    input[type="checkbox"] {
+        &:checked + label:before {
+          background-color: @color;
+        }
+    }
+}
+
+.switch-primary {
+    .switch-variant(@btn-primary-bg);
+}
+.switch-success{
+    .switch-variant(@btn-success-bg);
+}
+.switch-info {
+    .switch-variant(@btn-info-bg);
+}
+.switch-warning {
+    .switch-variant(@btn-warning-bg);
+}
+.switch-danger {
+    .switch-variant(@btn-danger-bg);
+}
+.switch-inverse {
+    .switch-variant(@btn-inverse-bg);
+}
+                            
+
+// Switch Sizes
+// --------------------------------------------------
+
+.switch-size(@font-size, @padding-vertical) {
+
+    @base-size: @font-size + (@padding-vertical * 2);
+    @width: @base-size * 2;
+
+    input[type="checkbox"] {
+        &:checked + label:after {
+            margin-left: @base-size;
+        }
+    }
+
+    label {
+        width: @width;
+        height: @base-size;    
+        padding: @padding-vertical;    
+
+        &:before {
+            border-radius: @width;
+        }
+        &:after {
+            width: @base-size - 2;
+        }
+    }
+}
+
+.switch-lg {
+    .switch-size(@font-size-large, @padding-large-vertical);
+}
+.switch-sm {
+    .switch-size(@font-size-small, @padding-small-vertical);
+}
+.switch-xs {    
+    .switch-size(@font-size-small, @padding-xs-vertical);
+}

@@ -1,0 +1,320 @@
+﻿/*
+    © 2013 1764023 Alberta Ltd.
+*/
+
+//
+// Flyout panels ==================================================================
+
+@flyout-bg: #fff;
+@flyout-border-color: #ddd;
+
+@flyout-left-right-width: 43%;
+@flyout-bottom-height: 39%;
+
+@flyout-body-padding: 15px;
+@flyout-heading-height: 45px;
+@flyout-heading-padding: 5px 15px;
+
+@flyout-menu-bg: #f5f5f5;
+@flyout-menu-border-color: #ddd;
+@flyout-menu-width: 50px;
+
+@nav-flyout-link-bg: #f5f5f5;
+@nav-flyout-link-color: #777;
+
+@nav-flyout-stripe-color: @blue;
+@nav-flyout-stripe-active-color: @blue-dark;
+@nav-flyout-stripe-hover-color: @blue-dark;
+
+.flyout {    
+    position: fixed;
+    background-color: @flyout-bg;
+    z-index: @zindex-navbar;
+    .transition-property(margin);
+    .transition-duration(.3s);
+    .transition-timing-function(ease);
+
+    .expand { display: block; }
+    .close { display: none; }
+
+    &.out {
+        .close { display: block !important; }
+        .expand { display: none !important; }
+    }
+
+    &-left, 
+    &-right {        
+        height: 100%;
+        width: @flyout-left-right-width;        
+    }
+
+    &-left { 
+        left: 0;
+        margin-left: -@flyout-left-right-width; 
+        border-right: 1px solid @flyout-border-color;
+        .box-shadow(2px 2px 3px rgba(0, 0, 0, 0.25));
+
+        &.out {
+            margin-left: 0;
+        }
+        .flyout-menu {
+            float: right;
+        }
+    }
+
+    &-right { 
+        right: 0;
+        margin-right: -@flyout-left-right-width;
+        border-left: 1px solid @flyout-border-color;
+        .box-shadow(-2px 2px 3px rgba(0, 0, 0, 0.25));
+        
+        &.out {
+            margin-right: 0;
+        }
+        .flyout-menu {
+            float: left;
+        }
+    }
+
+    &-bottom {        
+        width: 100%;
+        height: @flyout-bottom-height;      
+        bottom: 0;
+        margin-bottom: -@flyout-bottom-height;          
+        border-top: 1px solid @flyout-border-color;
+        .box-shadow(2px -2px 3px rgba(0, 0, 0, 0.25));
+
+        &.out {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.flyout-toggle {
+    min-height: @flyout-heading-height;
+    margin-top: 7px;
+    padding: @flyout-heading-padding;    
+
+    button.close,
+    button.expand {
+        margin-top: 5px;
+        margin-right: 2px;
+    }
+}
+              
+.flyout-heading {
+    min-height: @flyout-heading-height;
+    padding: @flyout-heading-padding;
+    border-bottom: 1px solid transparent;    
+}
+
+.flyout-title {
+    margin-top: 7px;
+    margin-bottom: 0;
+    font-size: ceil((@font-size-base * 1.585)); // ~22px
+    color: inherit;
+
+    > a {
+        color: inherit;
+    }
+}
+
+.flyout-body {
+    height: 100%;
+    overflow-y: auto;
+    background-color: @panel-bg;
+    color: @text-color;
+}
+
+
+// Flyout with vertical nav menu
+//
+// Adjust the collapsed width so that we leave 50px of the flyout sticking out
+// to keep the vertical nav-tabs accessible while the menu is closed. 
+
+.flyout.flyout-nav {
+    &.flyout-left { 
+        margin-left: ~"calc( -@{flyout-left-right-width} + 50px)";
+
+        &.out { 
+            margin-left: 0 
+        }
+    }
+
+    &.flyout-right { 
+        margin-right: ~"calc( -@{flyout-left-right-width} + 50px)"; 
+
+        &.out { 
+            margin-right: 0 
+        }
+    }    
+}
+
+.flyout-menu {
+    position: relative;
+    height: 100%;
+    width: @flyout-menu-width;
+    background-color: @flyout-menu-bg;
+    border-top: 1px solid @flyout-menu-border-color;
+    border-left: 1px solid @flyout-menu-border-color;
+    
+    .nav-vertical {        
+        position: fixed;
+        bottom: 0;        
+        margin-bottom: 15px;
+    }
+}
+
+.nav.nav-vertical {    
+    width: 50px;
+
+    // make the list items overlay the left .flyout-menu border   
+    margin-left: -1px;
+    
+    > li {
+        // Actual tabs (as links)
+        > a {                        
+            color: @nav-flyout-link-color;
+            border-right: 5px solid @nav-flyout-stripe-color;
+            border-top: 1px solid @nav-tabs-border-color;                                   
+            border-top-right-radius: @border-radius-large;
+            border-bottom-right-radius: @border-radius-large;
+
+            .transition-property(all);
+            .transition-duration(.1s);
+            .transition-timing-function(linear);         
+               
+            &:hover {                
+                color: #fff;
+                border-right-color: @nav-flyout-stripe-hover-color;                
+            }            
+        }        
+
+        &:last-child > a {
+            border-bottom: 1px solid @nav-tabs-border-color;
+        }
+        
+        // Active state, and its :hover to overide normal :hover
+        &.active > a {
+            &,
+            &:hover,
+            &:focus {
+                color: @text-color;
+                background-color: @nav-tabs-active-link-hover-bg;                
+                border-right-color: @nav-flyout-stripe-active-color;   
+            }
+        }
+    }
+}
+
+
+// Panels in flyouts
+//
+// Place `.panel` within a panel (not within a `.flyout-body`) and use `.panel-heading` instead
+// of the standard `.flyout-heading` for themed flyouts. Panels also do a better job of nested
+// content (tables etc.) due to bootstraps own overrides for panel content.
+
+.flyout {
+    .panel {
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .panel-heading {
+        border-radius: 0;
+    }
+
+    .panel-footer {
+        background-color: transparent;
+    }
+}
+
+                
+
+
+// Flyout Themes
+// --------------------------------------------------
+          
+.flyout-theme(@background; @border; @color) {
+
+    background-color: @background;    
+        
+    &.flyout-left { 
+        border-right: 1px solid @border;
+    }
+
+    &.flyout-right { 
+        border-left: 1px solid @border;
+    }
+
+    &.flyout-bottom {             
+        border-top: 1px solid @border;
+    }
+
+    .flyout-heading {
+        color: @color;
+    }
+
+    .flyout-menu {
+        background-color: transparent;
+        border-top: 1px solid @border;
+        border-left: 1px solid @border;   
+    }
+
+    .expand, 
+    .close {
+        color: @color;
+        opacity: 0.5;
+        text-shadow: 0 1px 0 (#fff - @color);
+    }
+     
+    .nav-vertical {    
+        > li {
+            > a {                        
+                color: darken(@color, 20%);
+                background-color: darken(@background, 10%);                
+                border-top: 1px solid @border;               
+            }        
+
+            &:last-child > a {
+                border-bottom: 1px solid @border;
+            }            
+        }
+    }
+}
+
+// Semi-transparent overlay theme for map and other applicaitions where it's beneficial 
+// to see content through the overlay. Helps when we feel that we're losing too much
+// real estate to the flyout.
+.flyout-overlay {    
+    .flyout-theme(rgba(0,0,0,0.8), #424242, @panel-primary-text); 
+
+    .flyout-menu {
+        background-color: rgba(0,0,0,0.2);
+    }
+
+    .flyout-body {
+        background-color: transparent;
+        color: @panel-primary-text;
+    }
+
+    .nav-vertical {    
+        > li {
+            > a { background-color: #555; }  
+
+            &.active > a {
+                &,
+                &:hover,
+                &:focus {
+                    color: @panel-primary-text;
+                    background-color: #30302F;  
+                }
+            }                   
+        }
+    }
+}
+
+.flyout-inverse {
+    .flyout-theme(#3b3e46, #424242, @panel-primary-text);     
+}

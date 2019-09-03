@@ -1,0 +1,31 @@
+[
+  {
+    "outputFileName": "Scripts/Scripts.js",
+    "inputFiles": [
+      "Scripts/jquery-3.3.1.js",
+      "Scripts/jquery-ui.js",
+      "Scripts/jquery.unobtrusive-ajax.js",
+      "Scripts/jquery.validate.js",
+      "Scripts/modernizr-2.8.3.js",
+      "Scripts/bootstrap.js",
+      "Scripts/respond.js",
+      "Scripts/button.js",
+      "Scripts/sidebar.js",
+      "Scripts/common.js",
+      "Scripts/kendo/2016.3.1118/kendo.ui.core.min.js",
+      "Scripts/application.js",
+      "Scripts/selectize.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/Styles.css",
+    "inputFiles": [
+      "Content/application.css",
+      "Content/font-awesome.css",
+      "Content/kendo/2016.3.1118/kendo.common-bootstrap.min.css",
+      "Content/kendo/2016.3.1118/kendo.bootstrap.min.css",
+      "Content/kendo/2016.3.1118/kendo.bootstrap.mobile.min.css",
+      "Content/selectize.css"
+    ]
+  }
+]

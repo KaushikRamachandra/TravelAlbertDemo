@@ -1,0 +1,63 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>@ViewBag.Title</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400' rel='stylesheet' type='text/css' />
+    <link href="//cdn.materialdesignicons.com/1.6.50/css/materialdesignicons.min.css" rel="stylesheet">
+
+    <link href="~/Content/Styles.min.css" rel="stylesheet" />
+    <script src="~/Scripts/Scripts.min.js"></script>
+
+    @RenderSection("Head", false)
+
+    <meta name="description" content="Welcome to the Travel Alberta Exercise website.">
+</head>
+<body>
+    <div id="site-wrapper">
+        <div id="site-canvas">
+            <div id="site-menu">
+                @Html.Partial("Bootstrap/Sidebar")
+            </div> <!-- end #site-menu -->
+
+            <div id="page">
+                <div id="page-content">
+                    <div id="page-menu">
+                        @Html.Partial("Bootstrap/Menu")
+                    </div>
+
+                    <header role="banner">
+                        <div class="container-fluid">
+                            @RenderSection("PageHeader", false)
+                        </div>
+                    </header>
+
+                    <main role="main">
+                        <div class="container-fluid">
+                            @Html.Partial("Bootstrap/Messages")
+
+                            @RenderBody()
+                        </div>
+                    </main>
+
+                    <div class="push"></div>
+                </div> <!-- end #page-content -->
+
+                <footer>
+                    <div class="container-fluid">
+                        @Html.Partial("Bootstrap/Footer")
+                    </div>
+                </footer>
+            </div> <!-- end #page -->
+        </div> <!-- end #site-canvas -->
+    </div> <!-- end #site-wrapper -->
+    @RenderSection("Foot", false)
+
+</body>
+</html>

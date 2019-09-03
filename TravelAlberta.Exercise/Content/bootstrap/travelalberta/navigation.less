@@ -1,0 +1,188 @@
+﻿/*
+    © 2013 1764023 Alberta Ltd.
+*/
+
+//
+// Navigation ==================================================================
+
+@navbar-stripe-default-color: @green-light;
+@navbar-stripe-active-color: @green-dark;
+@navbar-stripe-width: 4px;
+
+@navbar-mobile-height: 50px;
+@navbar-mobile-bg: @green-dark;
+
+.navbar-default {
+    min-height: 0;
+    border: 0;
+    border-bottom: @navbar-stripe-width solid @navbar-stripe-default-color;
+    border-radius: 0;
+
+    .nav {
+        margin-top: @navbar-stripe-width + 2;
+
+        > li > a {
+            padding: 10px 9px;
+        }
+        > li > .dropdown-menu:before {
+            border: none;
+        }
+        > li > .dropdown-menu:after {
+            border: none;
+        }
+        li.dropdown:hover > ul.dropdown-menu {
+            display: block;
+        }
+    }
+    .navbar-header {
+        padding-top: 3px;
+    }
+    .navbar-brand {
+        font-family: 'Roboto', sans-serif;
+    }
+    .navbar-brand,
+    .navbar-button {
+        color: @white;
+
+        &:hover,
+        &:active {
+            color: @white;
+        }
+    }
+    li.active {
+        border-bottom: @navbar-stripe-width solid @navbar-stripe-active-color;
+        margin-bottom: -@navbar-stripe-width;
+    }
+    .dropdown-menu {
+        margin: 0;
+        border: 1px solid @panel-default-border;
+        border-radius: 0 0 6px 6px;
+    }
+}
+
+.navbar-button {
+    position: relative;
+    float: left;
+    margin-top: 15px;
+    margin-left: 15px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    line-height: 20px;
+
+    i {
+        font-size: 1.2em;
+    }
+
+    &.right {
+        float: right;
+        margin-left: 0;
+        margin-right: 15px;
+    }
+}
+
+.nav-tabs {
+    > li.active {
+         > a, > a:hover, > a:focus {
+             border-color: @panel-default-border;
+             border-bottom: 1px solid @panel-bg;
+        }
+    }
+}
+
+.breadcrumb {
+    padding-left: @panel-border-radius;
+    font-size: 85%;
+
+    > li+li:before {
+      content: "\f105";
+      display: inline-block;
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1;
+    }
+}
+     
+.pager {
+    li.current {
+        padding: 0 7px;
+    }
+}
+
+
+//
+// Sidebar ====================================================================
+
+@sidebar-width: 250px;
+@sidebar-indent-width: 20px;
+@sidebar-item-height: 40px;
+@sidebar-brand-height: 60px;
+
+.sidebar {
+    height: 100vh;
+    min-height: 0.01%;
+    position: relative;
+    overflow-x: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.sidebar-nav {
+    width: @sidebar-width;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    list-style: none;
+    font-size: @font-size-large;
+
+    > li.sidebar-brand {
+        height: @sidebar-brand-height;
+        padding-left: @sidebar-indent-width;
+        line-height: @sidebar-brand-height;
+
+        a {
+            color: lighten(@text-muted, 10%);
+
+            &:hover {
+                color: @white;
+                background: none;
+            }
+        }            
+    }
+
+    > li {
+        line-height: @sidebar-item-height;
+
+        a {
+            display: block;
+            padding-left: @sidebar-indent-width;
+            text-decoration: none;
+            color: @text-muted;
+
+            &:hover {
+                text-decoration: none;
+                color: @white;
+                background: rgba(255,255,255,0.2);
+            }
+
+            &:active,
+            &:focus {
+                text-decoration: none;
+            }
+        }
+    }
+
+    /* nested menu items */    
+    > li > ul,
+    > li > .panel-collapse > ul {        
+        padding-left: 0;
+
+        > li a {
+            padding-left: @sidebar-indent-width * 2;
+        }
+    }    
+}
+
+

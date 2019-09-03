@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/_ErrorLayout.cshtml"; ;
+    ViewBag.Title = "Forbidden";                
+}
+             
+@section PageHeader 
+{
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="page-title">
+                <h2><i class="fa fa-warning"></i> Access Forbidden</h2>
+            </div>           
+        </div> <!-- end .col-sm-6 -->
+    </div> <!-- end .row -->
+    
+    <div class="notch"></div>
+}                                     
+             
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <i class="fa fa-warning"></i> Access Forbidden
+        </h4>
+    </div> <!-- end .panel-heading -->
+
+    <div class="panel-body">
+        You do not have permission to access this page. <a href onclick="window.history.back()">Click here</a> to go back.
+    </div> <!-- end .panel-body -->
+</div> <!-- end .panel -->

@@ -1,0 +1,157 @@
+﻿/*
+    © 2013 1764023 Alberta Ltd.
+*/
+
+//
+// Utility classes ============================================================
+ 
+/* display 'n/a' if no content */
+.na-on-empty:empty:before {
+    content: 'n/a';
+}
+   
+/* hide element if no content */
+.hidden-empty:empty {
+    display: none;
+}
+
+/* blank spacer icon */
+.fa.fa-spacer:before,
+.fa.fa-blank:before {
+    width: 1em;
+    content: '\A0';
+}    
+    
+/* text wrapping */        
+.no-wrap {
+    white-space: nowrap;
+}
+.word-wrap {   
+    word-wrap: break-word;
+    word-break: break-all;                
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}            
+
+/* scrolling */
+.scroll-x {
+    overflow-x: auto;
+}
+.scroll-y {
+    overflow-y: auto;
+}
+
+/* visibility, compliment bs .visible-{size}-block */
+.visible-block {
+    display: block;
+}
+.visible-inline {
+    display: inline;
+}
+.visible-inline-block {
+    display: inline-block;
+}
+
+/* padding */
+.pad-all {
+    padding: @panel-body-padding;
+}
+.pad-no {
+    padding: 0;
+}
+.pad-lft {
+    padding-left: @panel-body-padding;
+}
+.pad-rgt {
+    padding-right: @panel-body-padding;
+}
+.pad-top {
+    padding-top: @panel-body-padding;
+}
+.pad-btm {
+    padding-bottom: @panel-body-padding;
+}
+.pad-hor {
+    padding-right: @panel-body-padding;
+    padding-left: @panel-body-padding;
+}
+.pad-ver {
+    padding-top: @panel-body-padding;
+    padding-bottom: @panel-body-padding;
+}
+
+/* margin */
+.mar-all {
+    margin: @panel-body-padding;
+}
+.mar-no {
+    margin: 0;
+}
+.mar-lft {
+    margin-left: @panel-body-padding;
+}
+.mar-rgt {
+    margin-right: @panel-body-padding;
+}
+.mar-top {
+    margin-top: @panel-body-padding;
+}
+.mar-btm {
+    margin-bottom: @panel-body-padding;
+}
+.mar-hor {
+    margin-right: @panel-body-padding;
+    margin-left: @panel-body-padding;
+}
+.mar-ver {
+    margin-top: @panel-body-padding;
+    margin-bottom: @panel-body-padding;
+}
+
+/* relative positioning */
+.pos-rel {
+    position: relative;
+}
+.top-5  { top: 5px; }
+.top-10 { top: 10px; }
+.top-15 { top: 15px; }
+.lft-5  { left: 5px; }
+.lft-10 { left: 10px; }
+.lft-15 { left: 15px; }
+.rgt-5  { right: 5px; }
+.rgt-10 { right: 10px; }
+.rgt-15 { right: 15px; }
+.btm-5  { bottom: 5px; }
+.btm-10 { bottom: 10px; }
+.btm-15 { bottom: 15px; }
+
+
+/* absolute positioning, 'pin' to a corner */
+.pin {
+    position: absolute;    
+
+    &-right { right: 0; }
+    &-left { left: 0; }
+    &-top { top: 0; }
+    &-bottom { bottom: 0; }
+}
+                          
+            
+/* responsive floats */
+.pull-xs-left { float: left !important; }
+.pull-xs-right { float: right !important; }
+ 
+@media (min-width: @screen-sm-min) {
+    .pull-sm-left { float: left !important; }
+    .pull-sm-right { float: right !important; }
+}
+ 
+@media (min-width: @screen-md-min) {
+    .pull-md-left { float: left !important; }
+    .pull-md-right { float: right !important; }
+}
+ 
+@media (min-width: @screen-lg-min) {
+    .pull-lg-left { float: left !important; }
+    .pull-lg-right { float: right !important; }
+}

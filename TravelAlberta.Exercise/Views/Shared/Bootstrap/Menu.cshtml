@@ -1,0 +1,11 @@
+﻿@using System.Security.Claims;
+
+<div class="topper">
+    <div class="logo">
+        <a href="@Url.Action("Index", "Home")">
+            <img src="//az837918.vo.msecnd.net/consumerimages/logos-icons/logo-main-extended.svg" class="logo" style="position: static; display: inline-block; width: 133px; height: 35px; margin: 15px">
+        </a>
+    </div>
+</div> <!-- end .topper -->
+
+@Html.MvcSiteMap().Menu(false)

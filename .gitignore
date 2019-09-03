@@ -1,0 +1,26 @@
+# project files
+*.user
+*.suo
+
+# output
+out
+bin
+obj
+logfiles
+TestResults
+
+# nuget
+packages
+
+# resharper
+_ReSharper*
+/Source/Properties/PublishProfiles
+/Source/Trace.log
+/Source/*.vspscc
+/GeoTracOperationsWebApi/*.vspscc
+/GeoTracOperationsWebApi/Properties/PublishProfiles/*.pubxml
+/GeoTracOperationsWebApi/Trace.log
+.vs/GeoTracOperationsWebApi/v15/sqlite3/storage.ide
+Logfile.log.*
+.vs/
+/StampedeMotorsPortal/App_Data

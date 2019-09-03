@@ -1,0 +1,351 @@
+﻿@import "bootstrap/variables.less";
+@import "bootstrap/mixins.less";
+@import "bootstrap/bootstrap-travelalberta.less";
+
+/* Layout
+   --------------------------------------- */
+
+.row.row-tall {
+    margin-top: 15px;
+}
+
+.row.row-small {
+    margin-top: 1px;
+}
+/* Panels
+   --------------------------------------- */
+
+
+.col-xs-05, .col-xs-015, .col-xs-115, .col-xs-55, .col-xs-65, .col-xs-105 {
+    float: left;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+}
+.col-xs-05 {
+    width: 4.166%;
+}
+
+.col-xs-015 {
+    width: 12.5%;
+}
+
+.col-xs-65 {
+    width: 54.166%;
+}
+.col-xs-55 {
+    width: 45.833%;
+}
+.col-xs-115 {
+    width: 95.33%;
+}
+.col-xs-105 {
+    width: 87.5%;
+}
+
+
+.panel {
+    @media screen and (max-width: @screen-xs-max) {
+        margin-bottom: 15px;
+    }
+}
+   
+.panel-control {
+    .odometer {
+          margin-top: -7px;
+    }
+}
+
+
+/* Utility Classes
+   --------------------------------------- */
+
+// stale data
+.visible-stale {
+    visibility: hidden;
+}
+
+.visible-stale-block,
+.visible-stale-inline,
+.visible-stale-inline-block { 
+    display: none;
+}
+
+.is-stale {
+    .visible-stale {
+        visibility: visible;
+    }
+    .visible-stale-block {
+        display: block;
+    }
+    .visible-stale-inline {
+        display: inline;
+    }
+    .visible-stale-inline-block {
+        display: inline-block;
+    }
+}
+
+// has violations
+.visible-violation {
+    visibility: hidden;
+}
+
+.visible-violation-block,
+.visible-violation-inline,
+.visible-violation-inline-block { 
+    display: none;
+}
+
+.is-violation {
+    .visible-violation {
+        visibility: visible;
+    }
+    .visible-violation-block {
+        display: block;
+    }
+    .visible-violation-inline {
+        display: inline;
+    }
+    .visible-violation-inline-block {
+        display: inline-block;
+    }
+}
+
+// has warnings
+.visible-warning {
+    visibility: hidden;
+}
+
+.visible-warning-block,
+.visible-warning-inline,
+.visible-warning-inline-block { 
+    display: none;
+}
+
+.is-warning {
+    .visible-warning {
+        visibility: visible;
+    }
+    .visible-warning-block {
+        display: block;
+    }
+    .visible-warning-inline {
+        display: inline;
+    }
+    .visible-warning-inline-block {
+        display: inline-block;
+    }
+}
+
+/* Tables
+   --------------------------------------- */
+
+.ui-selectable {
+    .ui-icon-selected { 
+        color: @brand-success;
+        visibility: hidden;
+    }
+
+    .ui-selected {
+        .ui-icon-selected { 
+            visibility: visible;
+        }
+    }
+    tr.ui-selected td {        
+        background-color: lighten(@green-dark, 53%);
+    }
+}
+         
+/* Picklists
+   --------------------------------------- */
+
+.v-align-100 {
+    margin-top: 100px;
+}
+.v-align-150 {
+    margin-top: 150px;
+}
+.v-align-200 {
+    margin-top: 200px;
+}
+.list-container {
+    height: 500px;
+    min-height: 20px;
+    margin-bottom: 20px;  
+    .table > thead > tr > th {
+        background-color: transparent;
+        color: @text-color;
+    }
+}
+.list-container .list-items {
+    height: 400px;
+    margin-top: 13px;            
+    overflow-y: auto;
+}        
+                              
+ 
+/* PNotify
+   --------------------------------------- */
+                             
+.ui-pnotify-icon span {    
+    margin-top: 5px;
+}
+
+
+/* SignalR
+   --------------------------------------- */
+
+.connectivity {
+    width: 200px;
+    margin-left: -100px;
+    position: fixed;
+    bottom: 0;
+    left: 50%;        
+    padding: 10px 25px 10px;
+    background-color: @body-bg;
+    border-radius: 6px 6px 0 0;  
+    opacity: 0.9;
+    text-align: center;
+}
+
+
+/* Tables
+   --------------------------------------- */
+
+.table {
+    th.datetime {
+        min-width: 140px;
+    }
+
+    th.km {
+        min-width: 100px;
+    }
+
+    th.icon,
+    td.icon {
+        text-align: center;
+        min-width: 40px;
+    }
+
+    th.actions {
+        text-align: right;
+        min-width: 70px;
+    }
+
+    td.location,
+    td.wordwrap {
+        -ms-word-wrap: break-word;
+        word-wrap: break-word;
+        -ms-word-break: break-all;
+        word-break: break-all;
+    }
+
+    td > address {
+        margin-bottom: 0;
+        min-height: 40px;
+    }
+
+    tr > td > div {
+        margin: 0;
+    }
+}
+
+.table-wrapper {
+    min-height: 110px;
+    position: relative;
+
+    > .table,
+    > .table-responsive > .table { 
+        margin-bottom: 0;
+    }
+
+    .loading {
+        position: absolute;
+        top: 60px;
+        left: 50%;
+        z-index: 10;
+        margin-left: -25px;
+    }
+
+    /*.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, 
+    .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+        padding: 0 0 0 0;
+    }*/
+}
+         
+.loading {
+        position: absolute;
+        top: 60px;
+        left: 50%;
+        z-index: 10;
+        margin-left: -25px;
+    }
+
+.custom-error-textbox {
+    border:1px solid #f00;
+}
+
+.btn.round {
+	border-radius: 24px;
+}
+.btn-lg.round {
+	border-radius: 32px;
+}
+.btn-sm.round {
+	border-radius: 14px;
+}
+.btn-xs.round {
+	border-radius: 10px;
+}
+
+.input-group.input-group-unstyled input.form-control {
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+}
+.input-group-unstyled .input-group-addon {
+    border-radius: 4px;
+    border: 0px;
+    background-color: transparent;
+}
+
+@-moz-keyframes blinker {  
+             50% { opacity: 0.0; }
+        }
+
+@-webkit-keyframes blinker {  
+             50% { opacity: 0.0; }
+        }
+
+@keyframes blinker {  
+             50% { opacity: 0.0; }
+        }
+
+.notch .collapse-inner{
+    @media screen and (max-width: @screen-xs-max) and (orientation: portrait) {
+        padding: 5px;
+    }
+}
+
+.break-word {
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+}
+
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+#page-menu .topper .logo{
+    position: static;
+    display: inline-block;
+    vertical-align: top;
+    width: 133px;
+    height: 35px;
+    margin: 15px
+}

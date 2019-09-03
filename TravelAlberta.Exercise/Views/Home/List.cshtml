@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Inline View using DataTables";
+}
+
+@section Head
+{
+    <link href="~/Content/datatables.css" rel="stylesheet" />
+}
+
+    <div id="pagepanel" class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                    <h4><strong>Displaying a simple paged searchable table</strong></h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <p id="noplacestostay" class="text-muted" style="display: none;"><i class="fa fa-info-circle"></i> There is nothing to show here as we could not find any records from our server.</p>
+
+            <div id="placestostay" class="table-wrapper col-sm-6 col-sm-push-3 col-xs-12" style="display: none;">
+                <div class="table-responsive">
+                    <table class="display table table-bordered table-advance table-hover" id="placestostaytable">
+                        <thead>
+                            <tr>
+                                <th title="id">Id</th>
+                                <th title="name">Name</th>
+                                <th title="location">Location</th>
+                                <th title="healthpoints">HealthPoints</th>
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section Foot
+{
+    <script src="~/Scripts/datatables.min.js"></script>
+
+    <script type="text/javascript">
+        function GetPlacesToStayData() {
+            getMe("/list", populateTable, this);
+        }
+
+        function populateTable(resultData) {
+            var table = $('#placestostaytable').DataTable();
+
+            if (table)
+                table.destroy();
+
+            if (resultData.length > 0) {
+                $('#placestostaytable').DataTable({
+                    "aaData": resultData,
+                    "columns": [{ "data": "Id" }, { "data": "Name" }, { "data": "LocationDescription" }, { "data": "HealthPoints" }],
+                    dom: '<"top"Bfi>rt<"bottom"lp><"clear">',
+                    buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+                    responsive: true,
+                    pageLength: 10,
+                    "lengthMenu": [10, 20, 50, 100, "All"]
+                });
+
+                $("#placestostay").show();
+            }
+            else 
+                $("#noplacestostay").show();
+        }
+
+        setTimeout(GetPlacesToStayData, 0);
+    </script>
+}

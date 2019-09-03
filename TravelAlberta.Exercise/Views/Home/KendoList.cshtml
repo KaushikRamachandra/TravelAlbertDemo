@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Inline View using Kendo controls";
+}
+
+<div id="pagepanel" class="panel panel-default" data-role="placestostay">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                <h4><strong>Displaying a simple paged searchable table using Kendo controls</strong></h4>
+            </div>
+        </div>
+    </div>
+
+    @if (!Request.Browser.IsMobileDevice)
+    {
+        <div class="panel-body">
+            <p id="noplacestostay" class="text-muted" data-bind="invisible: hasPlacesToStay"><i class="fa fa-info-circle"></i> There is nothing to show here as we could not find any records from our server.</p>
+
+            <div class="row">
+                <div class="col-sm-6 col-sm-push-3 col-xs-12">
+                    Search: <input id='filter' type="text" data-bind="value: searchOn, events: { keyup: filteredPlacesToStayList }" data-value-update="keyup" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="table-wrapper col-sm-6 col-sm-push-3 col-xs-12" data-bind="visible: hasPlacesToStay">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-advance table-hover" id="placestostaytable">
+                            <thead>
+                                <tr>
+                                    <th title="id">Id</th>
+                                    <th title="name">Name</th>
+                                    <th title="location">Location</th>
+                                    <th title="healthpoints">HealthPoints</th>
+                                </tr>
+                            </thead>
+
+                            <tbody data-bind="source: placesToStayList" data-template="placestostay-template"></tbody>
+                        </table>
+                    </div> <!-- end .table-responsive -->
+                </div> <!-- end .table-wrapper -->
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            Search: <input id='filter' type="text" data-bind="value: searchOn, events: { keyup: filteredPlacesToStayList }" data-value-update="keyup" />
+        </div>
+
+        <div class="table-wrapper col-xs-11" data-bind="visible: hasPlacesToStay">
+            <div class="table-responsive">
+                <table class="table table-bordered table-advance table-hover" id="placestostaytable">
+                    <thead>
+                        <tr>
+                            <th title="id">Pleaces to Stay Details</th>
+                        </tr>
+                    </thead>
+
+                    <tbody data-bind="source: placesToStayList" data-template="placestostay-mobile-template"></tbody>
+                </table>
+            </div> <!-- end .table-responsive -->
+        </div> <!-- end .table-wrapper -->
+    }
+
+
+</div>
+
+@section Foot
+{
+    @Scripts.Render("~/Scripts/pages/placestostayviewmodel.js")
+    @Html.Partial("~/Views/Templates/placestostay.tmpl.cshtml")
+}

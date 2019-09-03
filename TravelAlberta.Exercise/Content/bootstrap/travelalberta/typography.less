@@ -1,0 +1,138 @@
+﻿/*
+    © 2013 1764023 Alberta Ltd.
+*/
+
+//
+// Typography =================================================================
+
+@headings-subhead-color: lighten(@headings-color, 25%);
+     
+@line-margins: 0.6em 0;
+@line-border-radius: 6px;
+@line-border: #e6e6e6;
+@line-background: #f8f8f8;
+
+h1, h2, h3, h4, h5 {  
+    small {
+        margin-left: 15px;
+        color: @headings-subhead-color;
+    }
+
+    &.subheading {
+        margin-bottom: 15px;
+        color: @headings-subhead-color;
+        border-bottom: 1px solid @headings-subhead-color;
+    }
+}
+
+.alert {
+    &.alert-info,
+    &.alert-success,
+    &.alert-warning,
+    &.alert-danger {
+        color: #fff;
+    }
+}
+
+.label {
+    margin-right: 0.5em;    
+    border-radius: 0.1em;    
+    font-weight: 400;
+    font-size: 85%;        
+}
+
+.label.label-lg {
+    font-size: 100%;
+}
+
+.label.label-icon {
+    padding: 0.2em 0.3em;
+    font-size: 100%;
+    background-color: @btn-default-bg;
+    border: 1px solid @btn-default-border;
+    color: @text-color;
+
+    .fa, img {
+        margin-right: 0.3em;
+        &:last-child { margin-right: 0; }
+    }
+}
+
+.page-help {
+    a, a:hover {
+        color: @text-color;
+        text-decoration: none;
+    }
+
+    a.slide-label-left {              
+        float: right;              
+        text-align: right;                            
+        white-space: nowrap;
+        padding: 2px 18px 2px 5px; /* 15px offset for icon */
+        border-radius: @border-radius-small;
+        border: 1px solid transparent;
+        .transition(background-color .3s ease-in-out);
+
+        &:hover {
+            background-color: @btn-default-bg;
+            border-color: @btn-default-border;
+            
+            .hidden-label .text {
+                width: 100%;
+            }
+        }
+
+        .hidden-label {
+            width: 100%;
+            display: inline-block;        
+        }
+
+        .hidden-label .text {
+            margin-left: -10px;
+            width: 0%;
+            overflow: hidden;
+            display: inline-block;                                            
+            line-height: 1em;
+            vertical-align: middle;
+            text-align: right;        
+            .transition(width .3s ease-in-out);
+        }    
+    }
+}
+                              
+kbd {
+    font-size: @font-size-small;
+    text-shadow: 0 1px 0 @white;
+    border: 1px solid @panel-default-border;
+    box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px @white inset;
+}
+     
+
+//
+// Responsive Text Alginment ==================================================
+                             
+.text-xs-left { text-align: left; }
+.text-xs-right { text-align: right; }
+.text-xs-center { text-align: center; }
+.text-xs-justify { text-align: justify; }
+ 
+@media (min-width: @screen-sm-min) {
+    .text-sm-left { text-align: left; }
+    .text-sm-right { text-align: right; }
+    .text-sm-center { text-align: center; }
+    .text-sm-justify { text-align: justify; }
+}
+ 
+@media (min-width: @screen-md-min) {
+    .text-md-left { text-align: left; }
+    .text-md-right { text-align: right; }
+    .text-md-center { text-align: center; }
+    .text-md-justify { text-align: justify; }
+}
+ 
+@media (min-width: @screen-lg-min) {
+    .text-lg-left { text-align: left; }
+    .text-lg-right { text-align: right; }
+    .text-lg-center { text-align: center; }
+    .text-lg-justify { text-align: justify; }
+}

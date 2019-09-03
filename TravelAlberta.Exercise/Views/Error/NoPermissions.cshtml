@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/_ErrorLayout.cshtml"; ;
+    ViewBag.Title = "Access Denied";
+}
+
+@section PageHeader
+{
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="page-title">
+                <h2><i class="fa fa-info-circle"></i>@ViewBag.UserName - Insufficient Permissions</h2>
+            </div>
+        </div> <!-- end .col-sm-6 -->
+    </div> <!-- end .row -->
+
+    <div class="notch"></div>
+}
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <i class="fa fa-info-circle"></i> Insufficient Permissions
+        </h4>
+    </div> <!-- end .panel-heading -->
+
+    <div class="panel-body">
+        Sorry we know who you are, but unfortunately you don't seem to have the right permissions to access this website. 
+    </div> <!-- end .panel-body -->
+</div> <!-- end .panel -->

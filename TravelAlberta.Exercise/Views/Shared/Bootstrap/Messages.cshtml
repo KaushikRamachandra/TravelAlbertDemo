@@ -1,0 +1,30 @@
+﻿@*
+    Renders 'Flash' style messages from MVC Controllers, and provides a UI template
+    for the $.messages.* JavaScript API.
+*@
+
+<div id="messages">
+    <div class="alert alert-warning @(TempData["warning"] == null ? "hidden" : "")">
+        <a class="close" data-dismiss="alert" href="#">&times;</a>
+        <strong><i class="fa fa-exclamation-circle"></i></strong> 
+        @Html.Raw(TempData["warning"])
+    </div>  
+
+    <div class="alert alert-danger @(TempData["error"] == null ? "hidden" : "")">
+        <a class="close" data-dismiss="alert" href="#">&times;</a>
+        <strong><i class="fa fa-exclamation-triangle"></i> Error:</strong> 
+        @Html.Raw(TempData["error"])
+    </div>
+
+    <div class="alert alert-success @(TempData["success"] == null ? "hidden" : "")">
+        <a class="close" data-dismiss="alert" href="#">&times;</a>
+        <strong><i class="fa fa-check-circle"></i> Success!</strong> 
+        @Html.Raw(TempData["success"])
+    </div>
+
+    <div class="alert alert-info @(TempData["info"] == null ? "hidden" : "")">
+        <a class="close" data-dismiss="alert" href="#">&times;</a>
+        <strong><i class="fa fa-info-circle"></i></strong> 
+        @Html.Raw(TempData["info"])
+    </div>
+</div>

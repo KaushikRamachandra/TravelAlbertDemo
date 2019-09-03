@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_ErrorLayout.cshtml"; ;
+    ViewBag.Title = "Page Not Found";                
+}
+             
+@section PageHeader 
+{
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="page-title">
+                <h2><i class="fa fa-info-circle"></i> Page Not Found</h2>
+            </div>           
+        </div> <!-- end .col-sm-6 -->
+    </div> <!-- end .row -->
+    
+    <div class="notch"></div>
+}                                     
+             
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <i class="fa fa-info-circle"></i> Page Not Found
+        </h4>
+    </div> <!-- end .panel-heading -->
+
+    <div class="panel-body">
+        We couldn't find the URL you were looking for. <a href onclick="window.history.back()">Click here</a> to
+        return to the page you came from.
+    </div> <!-- end .panel-body -->
+</div> <!-- end .panel -->

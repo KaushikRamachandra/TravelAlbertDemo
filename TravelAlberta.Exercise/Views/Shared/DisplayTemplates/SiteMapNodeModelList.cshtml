@@ -1,0 +1,25 @@
+﻿@model MvcSiteMapProvider.Web.Html.Models.SiteMapNodeModelList
+@using System.Web.Mvc.Html
+@using MvcSiteMapProvider.Web.Html.Models
+
+<ul class="dropdown-menu" role="menu">
+    @foreach (var node in Model)
+    {
+        if (node.Children.Any())
+        {
+            <li class="dropdown-submenu">
+                @Html.DisplayFor(m => node)
+                <ul class="dropdown-menu">
+                    @foreach (var subNode in node.Children)
+                    {
+                        <li>@Html.DisplayFor(m => subNode)</li>
+                    }
+                </ul>
+            </li>
+        }
+        else
+        {
+            <li>@Html.DisplayFor(m => node)</li>
+        }
+    }
+</ul>

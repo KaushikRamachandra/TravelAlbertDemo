@@ -1,0 +1,36 @@
+﻿/*
+    © 2013 1764023 Alberta Ltd.
+*/
+
+//
+// Filter Notch ===============================================================
+
+@notch-height: 18px;
+
+.notch {
+    .notch-toggle {
+        height: @notch-height;
+        margin: 0 auto;
+        margin-top: -@notch-height;
+        display: block;
+        position: relative;
+        top: @notch-height;
+        background: transparent url('../../images/notch-arrow.png') top center no-repeat;
+        text-align: center;
+        outline: none;
+        z-index: 920;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .collapse-inner {
+        margin-bottom: @panel-body-padding;
+        padding: (@notch-height + 10px) @panel-body-padding @panel-body-padding @panel-body-padding;
+        border: 1px solid #E1E4DF;
+        background-color: lighten(@cream, 14%);        
+        box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        z-index: 900;
+    }
+}

@@ -1,0 +1,66 @@
+﻿/*
+    © 2013 1764023 Alberta Ltd.
+*/
+
+//
+// Tables =====================================================================
+ 
+.table > thead > tr > th {
+    background-color: darken(@gray, 7%);    
+    color: #fff;
+}
+
+.table th > a {
+    color: #fff;
+
+    &:hover {
+        color: #ddd;
+        text-decoration: none;
+        border-bottom: 1px dotted #ddd;
+    }
+}
+
+.table .table {
+    margin-top: -@table-cell-padding;
+    background-color: @table-bg;
+
+    td {
+        border: 0;
+    }
+}
+
+.table-transparent {
+    > thead > tr > th {
+//        background-color: transparent;
+        background-color: @panel-bg;
+        color: @text-color;
+
+        a { color: @text-color; }
+    }
+}
+   
+.table-responsive {
+    border: 0;
+}
+
+.table-fixed {
+    table-layout: fixed;
+}
+
+.table-help-block {
+    color: @text-muted;
+    margin: @line-height-computed 0;
+}
+
+.table {
+    th.icon,
+    td.icon {
+        text-align: center;
+        min-width: 40px;
+    }
+    td.actions,
+    th.actions {
+        text-align: right;
+        min-width: 70px;
+    }
+}

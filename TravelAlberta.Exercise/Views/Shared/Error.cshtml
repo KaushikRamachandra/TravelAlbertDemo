@@ -1,0 +1,79 @@
+﻿@{
+    Layout = "~/Views/Shared/_ErrorLayout.cshtml"; ;
+    ViewBag.Title = "Unexpected Error";
+}
+
+@model HandleErrorInfo
+
+@section PageHeader
+{
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="page-title">
+                <h2><i class="fa fa-bug"></i> Unhandled Exception</h2>
+            </div>
+        </div> <!-- end .col-sm-6 -->
+    </div> <!-- end .row -->
+
+    <div class="notch"></div>
+}
+
+<div class="alert alert-danger">
+    <a class="close" data-dismiss="alert" href="#">&times;</a>
+    <strong><i class="fa fa-bug"></i> Oops!</strong> Something went wrong...An unexpected error has occurred.
+    Please contact the system administrator.
+</div>
+
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        <i class="fa fa-warning"></i> Error Details
+    </div> <!-- end .panel-heading -->
+    @if (Model != null)
+    {
+        <table class="table table-striped">
+            <tr>
+                <td><strong>Controller</strong></td>
+                <td>@Model.ControllerName</td>
+            </tr>
+            <tr>
+                <td><strong>Action</strong></td>
+                <td>@Model.ActionName</td>
+            </tr>
+            <tr>
+                <td><strong>HTTP Status Code</strong></td>
+                <td>@Response.StatusCode</td>
+            </tr>
+            <tr>
+                <td><strong>Error Message</strong></td>
+                <td>@Model.Exception.Message</td>
+            </tr>
+
+            @if (Model.Exception.InnerException != null)
+            {
+                <tr>
+                    <td><strong>Inner Error Message</strong></td>
+                    <td>@Model.Exception.InnerException.Message</td>
+                </tr>
+            }
+        </table>
+
+        <div class="panel-body">
+
+            <!-- pre must be left aligned to properly print whitespace   -->
+<pre class="pre-scrollable">
+@Model.Exception.Message 
+@Model.Exception.StackTrace
+</pre>
+
+@if (Model.Exception.InnerException != null)
+{
+<pre class="pre-scrollable">
+@Model.Exception.InnerException.Message 
+@Model.Exception.InnerException.StackTrace
+</pre>
+}
+            <!-- end pre -->
+
+        </div> <!-- end .panel-body -->
+    }
+</div> <!-- end .panel -->

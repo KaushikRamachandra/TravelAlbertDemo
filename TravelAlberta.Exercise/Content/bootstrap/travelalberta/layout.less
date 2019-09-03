@@ -1,0 +1,190 @@
+﻿/*
+    © 2013 1764023 Alberta Ltd.
+*/
+
+//
+// Site Layout =================================================================
+
+@site-menu-width: 250px;
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    -moz-osx-font-smoothing:grayscale;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+#site-wrapper {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#site-wrapper.show-menu {
+    #site-canvas {
+        margin-left: @site-menu-width;
+    }
+}
+
+#site-canvas {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    .transition-property(margin);
+    .transition-duration(.3s);
+    .transition-timing-function(ease);
+}
+
+#site-menu {
+    height: 100%;
+    width: @site-menu-width;
+    margin-left: -@site-menu-width;
+    position: fixed;
+    top: 0;
+    z-index: @zindex-navbar;
+    background: @navbar-inverse-bg url('../../images/stressed_linen.png') top left;
+}
+                
+//
+// Page Layout=================================================================
+
+@footer-height: 180px;
+@footer-height-small: 60px;
+
+#page {
+    height: 100%;
+    width: 100%;
+}
+
+#page-menu {
+    background-color: @navbar-default-bg;
+
+    .topper {
+        padding: 3px 16px 0;
+        .hidden-xs();
+    }
+    .session {
+        float: right;
+        display: inline-block;
+        text-align: right;
+        margin-right: 13px;
+        margin-left: 20px;
+    }
+    .navbar {
+        margin-bottom: 0;
+    }
+    .navbar-collapse {
+        padding: 0;
+    }
+}
+
+#page-content {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -@footer-height;
+    
+    .page-title {        
+        padding-top: (@line-height-computed / 4);
+        padding-bottom: (@line-height-computed / 2);
+        .hidden-xs();
+    }
+    .page-actions {
+        padding-top: @line-height-computed;          
+        padding-bottom: (@line-height-computed / 2);
+        text-align: right;
+    }
+    .push {
+        height: @footer-height;
+
+        @media screen and (max-width: @screen-sm-max) {
+            height: @footer-height-small;
+            }
+    }
+
+    @media screen and (max-width: @screen-sm-max) {
+        margin: 0 auto -@footer-height-small;
+    } 
+}
+
+header {
+  background-color: @panel-bg;
+  border-bottom: 1px solid @panel-default-border;
+  z-index: @zindex-navbar;
+  .transition-property(box-shadow);
+  .transition-duration(.3s);
+  .transition-timing-function(ease);
+
+  .page-title, 
+  .page-actions {
+      min-height: 80px;
+  }
+  &.affix {
+    top: 0;
+    width: 100%;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.sticky-header {
+   min-height: 90px;
+}
+
+header, main {
+    margin-bottom: 20px;
+}
+
+footer {
+    height: @footer-height;
+    padding: 40px 0;
+    color: @white;
+    background-color: @blue;
+    box-shadow: inset 0 2px 2px rgba(0,0,0,0.15);
+
+    address,
+    .policy {
+        .hidden-xs();
+    }
+
+    address,
+    .credit,
+    .policy {
+        margin-bottom: 10px;
+    }
+
+    a {
+        color: @white;
+        border-bottom: 1px dotted;
+
+        &:hover, &:focus {
+            color: @white;
+            text-decoration: none;
+            border-bottom: 1px solid;
+        }
+    }    
+
+    @media screen and (max-width: @screen-sm-min) {
+        height: auto;
+        background-color: @body-bg;
+        color: @text-muted;
+        box-shadow: none;
+
+        a, a:hover, a:focus {
+            color: @text-muted;
+        }
+    }
+    
+     @media screen and (max-width: @screen-sm-max) {
+        /*background-color: @body-bg;*/
+        /*color: @text-muted;*/
+        box-shadow: none;
+        padding: 0 0;
+        height: @footer-height-small;
+    }     
+}
